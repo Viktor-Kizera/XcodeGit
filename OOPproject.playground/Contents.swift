@@ -269,3 +269,97 @@ var text = """
 зараз будемо вчитися налаштовувати
 git
 """
+
+//@main
+//struct Application {
+//    static func main() throws {
+//        
+//    }
+//}
+protocol Shape {
+    var area: Double {get}
+}
+
+class RectangleOne: Shape {
+    var width: Double
+    var heigth: Double
+    init(width: Double, heigth: Double) {
+        self.width = width
+        self.heigth = heigth
+    }
+    var area: Double  {width * heigth}
+}
+var squareRectangle = RectangleOne(width: 5, heigth: 5)
+squareRectangle.area
+
+class Circle: Shape {
+    var r: Int
+    init(r: Int) {
+        self.r = r
+    }
+    var area: Double {
+        3.14 * pow(Double(r), 2)
+    }
+}
+var squareCircle = Circle(r: 5)
+squareCircle.area
+
+var numberP = Double.pi
+print(numberP)
+
+protocol Vehicle {
+    var speed: Double {get set}
+    var fuelLevel: Double {get set}
+}
+
+class Car2: Vehicle {
+    var speed: Double
+    var fuelLevel: Double
+    var brand: String
+    init(speed: Double, fuelLevel: Double, brand: String) {
+        self.speed = speed
+        self.fuelLevel = fuelLevel
+        self.brand = brand
+    }
+}
+class Bicycle: Vehicle {
+    var speed: Double
+    var fuelLevel: Double
+    var numberOfGears: Int
+    init(speed: Double, fuelLevel: Double, numberOfGears: Int) {
+        self.speed = speed
+        self.fuelLevel = fuelLevel
+        self.numberOfGears = numberOfGears
+    }
+}
+var myCar = Car2(speed: 80, fuelLevel: 45, brand: "Mazda")
+var myBicycle = Bicycle(speed: 100, fuelLevel: 75, numberOfGears: 2)
+
+protocol Animal {
+    var name: String {get}
+    func makeSound()
+}
+
+class Dog: Animal {
+    var name: String
+    init(name: String) {
+        self.name = name
+    }
+    func makeSound() -> Void {
+        print("\n\(name) - Гав гав")
+    }
+    
+}
+class Cat: Animal {
+    var name: String
+    init(name: String) {
+        self.name = name
+    }
+    func makeSound() -> Void {
+        print("\(name) - Мʼяв мʼяв")
+    }
+}
+var myDog = Dog(name: "Циган")
+myDog.makeSound()
+var myCat = Cat(name: "Мурчик")
+myCat.makeSound()
