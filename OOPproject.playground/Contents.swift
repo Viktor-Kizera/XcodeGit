@@ -363,3 +363,88 @@ var myDog = Dog(name: "Циган")
 myDog.makeSound()
 var myCat = Cat(name: "Мурчик")
 myCat.makeSound()
+
+protocol Online {
+    var name: [String] {get}
+    var adress: String {get}
+    var typeDelivery: String {get}
+}
+protocol Offline {
+    var name: [String] {get}
+    var adressStore: String {get}
+}
+protocol Order {
+    var identificator: Int {get}
+    var status: String {get}
+    var sumOfOrder: Int {get}
+}
+
+class OnlineOrder: Order, Online {
+    var name: [String]
+    var adress: String
+    var typeDelivery: String
+    var identificator: Int
+    var status: String
+    var sumOfOrder: Int
+    init(name: [String], adress: String, typeDelivery: String, identificator: Int, status: String, sumOfOrder: Int)
+    {
+        self.name = name
+        self.adress = adress
+        self.typeDelivery = typeDelivery
+        self.identificator = identificator
+        self.status = status
+        self.sumOfOrder = sumOfOrder
+    }
+}
+
+class OfflineOrder: Order, Offline {
+    var name: [String]
+    var adressStore: String
+    var identificator: Int
+    var status: String
+    var sumOfOrder: Int
+    init(name: [String], adressStore: String, identificator: Int, status: String, sumOfOrder: Int) {
+        self.name = name
+        self.adressStore = adressStore
+        self.identificator = identificator
+        self.status = status
+        self.sumOfOrder = sumOfOrder
+    }
+}
+var deliveryOrderOne = OfflineOrder(name: ["Молоко", "Вода"], adressStore: "Коновальця 35", identificator: 45, status: "Замовлення прийнято", sumOfOrder: 145)
+var deliveryOrderTwo = OnlineOrder(name: ["Піца 4 сири"], adress: "Франка 51", typeDelivery: "Швидка доставка", identificator: 32, status: "Замовлення в дорозі", sumOfOrder: 432)
+print("\nНазва продуктів: \(deliveryOrderOne.name)\nАдреса доставки: \(deliveryOrderOne.adressStore)\nСтатус замовлення: \(deliveryOrderOne.status)")
+
+enum TypeDelivery: String {
+    case car = "Автомобілем"
+    case bike = "Мотоциклом"
+    case bycicle = "Велосипедом"
+}
+
+protocol EnumProtocol {
+    var enumPro: TypeDelivery {get}
+}
+
+class OrderBike: EnumProtocol {
+    var enumPro: TypeDelivery
+    init(enumPro: TypeDelivery) {
+        self.enumPro = enumPro
+    }
+}
+var numberOneWithenum = OrderBike(enumPro: .bycicle)
+print(numberOneWithenum.enumPro.rawValue)
+
+
+extension Int {
+    subscript(digitIndex: Int) -> Int {
+        var base = 1
+        var index = digitIndex
+        while index > 0 {
+            base *= 10
+            index -= 1
+        }
+        return (self / base) % 10
+    }
+}
+var number = 123[0]
+print(number)
