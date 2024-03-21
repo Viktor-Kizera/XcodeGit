@@ -450,3 +450,15 @@ var number = 123[0]
 print(number)
 
 
+struct Person {
+  var name: String
+  var age: Int
+
+    mutating func setName(newName: String) {
+    self.name = newName
+  }
+}
+var personOne = Person(name: "Viktor", age: 21)
+print(personOne.name)
+personOne.setName(newName: "Inna")
+print(personOne.name)
