@@ -464,3 +464,32 @@ personOne.setName(newName: "Inna")
 print(personOne.name)
 var personTwo = Person(name: "Nina", age: 57)
 var personThree = Person(name: "Sasha", age: 19)
+
+var printStrind: (String) -> Void = {print("Вас звати - \($0)")}
+printStrind("Ulia")
+
+var suma: (Int, Int ) -> Int = {$0 + $1}
+func myFunc(a: Int, b: Int, mathfunc: (Int, Int) -> Int) -> Void {
+    let result = mathfunc(a, b)
+    print(result)
+}
+
+myFunc(a: 12, b: 10, mathfunc: {$1 - $0})
+myFunc(a: 12, b: 6) { a, b in
+    a - b
+}
+
+protocol Transport {
+    associatedtype Element
+    var UID: Element {get set}
+}
+
+struct CarOne: Transport {
+    var UID: Int = 0
+}
+struct Truck: Transport {
+    var UID: String = ""
+}
+func getCar() -> some Transport {
+    return CarOne(UID: 32)
+}
