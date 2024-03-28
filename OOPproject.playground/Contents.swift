@@ -504,3 +504,26 @@ let vector = Vector2D(x: 3.0, y: 1.0)
 let anotherVector = Vector2D(x: 2.0, y: 4.0)
 let combinedVector = vector + anotherVector
 print(combinedVector)
+
+protocol DelegateDisplay {
+    func showTemperature (_ temperature: Double)
+}
+
+class TemperatureSensor {
+    var delegate: DelegateDisplay?
+    func didSetTemperature (_ temperatureValue: Double) -> Double {
+        delegate?.showTemperature(temperatureValue)
+        return temperatureValue
+    }
+    
+}
+class Display: DelegateDisplay {
+    func showTemperature (_ temperature: Double) {
+        print("Ваша температура = \(temperature)")
+    }
+}
+var person = TemperatureSensor()
+var display = Display()
+person.delegate = display
+person.didSetTemperature(38.1)
+
