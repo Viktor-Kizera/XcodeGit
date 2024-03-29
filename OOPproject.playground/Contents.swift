@@ -527,3 +527,33 @@ var display = Display()
 person.delegate = display
 person.didSetTemperature(38.1)
 
+protocol DelegateTeacher: AnyObject {
+    func giveTask()
+}
+
+class Student {
+  weak var delegate: DelegateTeacher?
+    func didFinishTask () {
+        print("Задача виконана")
+        delegate?.giveTask()
+    }
+    func nextTaskDidFinish() {
+        print("Ця задача також зроблена, проте є запитання до неї")
+    }
+}
+class Teacher: DelegateTeacher {
+    var delegateStudent: Student?
+    func giveTask() {
+        print("Дай задачу")
+    }
+    func didGiveTask() {
+        print("Виконай ось цю задачу")
+        delegateStudent?.nextTaskDidFinish()
+    }
+}
+var student = Student()
+var teacher = Teacher()
+student.delegate = teacher
+teacher.delegateStudent = student
+student.didFinishTask()
+teacher.didGiveTask()
