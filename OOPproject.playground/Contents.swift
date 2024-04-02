@@ -559,3 +559,4 @@ student.didFinishTask()
 teacher.didGiveTask()
 
 var myPhoneModel = "iPhone 14 pro max"
+var myLaptopName = "MacBook Pro M1"
