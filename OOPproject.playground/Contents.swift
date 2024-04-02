@@ -557,3 +557,5 @@ student.delegate = teacher
 teacher.delegateStudent = student
 student.didFinishTask()
 teacher.didGiveTask()
+
+var myPhoneModel = "iPhone 14 pro max"
