@@ -561,3 +561,47 @@ teacher.didGiveTask()
 var myPhoneModel = "iPhone 14 pro max"
 var myLaptopName = "MacBook Pro M1"
 var name3 = "Svitlana"
+
+func operation(_ operatorClosure: (Int, Int) -> Int, _ a: Int, _ b: Int) -> Int {
+    return operatorClosure(a, b)
+}
+
+var myClosure = operation(%, 3, 3)
+print(myClosure)
+
+func sumaTwoNumbers(_ a: Int, _ b: Int) -> Int {
+    var suma = a + b
+    return suma
+}
+
+func sumaMinusNum(number c: Int, numberTwo b: Int, sumaTwoNumbers: (Int, Int) -> Int, numberThree n: Int) -> Int {
+    return sumaTwoNumbers(c, b) - n
+}
+
+print(sumaMinusNum(number: 5, numberTwo: 3, sumaTwoNumbers: sumaTwoNumbers(_:_:), numberThree: 3))
+
+protocol ColorGeneratorProtocol {
+    func createRandomHashColor() -> String
+    func colorRandomOnButton()
+}
+
+class ColorGenerator: ColorGeneratorProtocol {
+    func createRandomHashColor() -> String {
+        let characters: [Character] = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F",
+            "a", "b", "c", "d", "e", "f"]
+        var hashColor: [String] = [""]
+        for _ in 0..<6 {
+            if let codeColor = characters.randomElement() {
+                hashColor.append(String(codeColor))
+            }
+        }
+        return hashColor.joined()
+    }
+    func colorRandomOnButton() {
+        
+    }
+}
+
+var color = ColorGenerator()
+var colorCode = color.createRandomHashColor()
+print(colorCode)
